@@ -53,6 +53,15 @@
   margin:4px;
   display: inline-block;
   padding: 4px 12px;
+  position: relative;
+}
+
+.message-name {
+  position: absolute;
+  top: -7px;
+  font-size: 0.6rem;
+  color: white;
+  font-weight: bold;
 }
 
 .text-input{
@@ -105,4 +114,13 @@
   align-items: center;
   font-weight: bold;
   outline:none;
+}
+
+.name-picker {
+  display: flex;
+  margin: 8px 12px;
+}
+
+.name-picker input, .name-picker button {
+  max-width: 100px;
 }

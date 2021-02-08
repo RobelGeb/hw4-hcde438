@@ -2,25 +2,31 @@ import { useState } from 'react';
 import './App.css';
 import TextInput from './TextInput';
 import Message from './Message';
+import NamePicker from './NamePicker';
+import {db, useDB} from './db'
 
 function App() {
-  const [messages, setMessages] = useState([])
+  const messages = useDB()
+  const [username, setUsername] = useState(
+    localStorage.getItem('username') || ''
+  )
+
   return <div className="App">
-      
-      <header className="App-header">
-        <div className="logo" />
-         WALKIE 
-      </header>
-      
-      <main className="messages">
+    <header className="App-header">
+      <div className="logo" />
+        WALKIE
+        <NamePicker saveName={setUsername} /> 
+    </header>
+    
+    <main className="messages">
       {messages.map((m,i)=> {
         return <Message key={i} {...m} />
       })}
-      </main>
+    </main>
 
-      <TextInput
-        send={(t)=> setMessages( [{text:t}, ...messages] )}
-      />
+    <TextInput
+      send={(t)=> db.send({text:t, name:username, date:new Date()})}
+    />
 
   </div>
 }
