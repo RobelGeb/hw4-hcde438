@@ -3,9 +3,8 @@
 }
 .App {
   text-align: center;
-  background: #67B26F;  /* fallback for old browsers */
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(1,0,88,1) 20%, rgba(0,0,108,1) 40%, rgba(0,26,126,1) 60%, rgba(0,77,162,1) 80%, rgba(0,212,255,1) 100%);
-  width: 100vw;
+  background: rgb(36,36,36);
+  background: linear-gradient(90deg, rgba(36,36,36,0.9953703703703703) 0%, rgba(100,125,133,1) 72%);  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,7 +16,7 @@
   border-bottom:1px solid white;
   height: 2.5rem;
   display:flex;
-  align-items: flex-start;
+  justify-content: flex-around;
   padding: 0 12px;
   font-size:2rem;
   font-family: 'Big Shoulders Display';
@@ -47,8 +46,9 @@
   justify-content: left;
 }
 .message{
-  background:black;
+  background:rgba(222, 222, 223, 0.102);
   color:white;
+  font-family: 'Big Shoulders Display';
   border-radius:10px;
   margin:4px;
   display: inline-block;
@@ -72,6 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Big Shoulders Display';
 }
 
 .send-button > svg {
@@ -118,9 +119,27 @@
 
 .name-picker {
   display: flex;
-  margin: 8px 12px;
+  margin-left: 20px;
+  justify-self: flex-end;
+  position: fixed;
+  right: 0.5rem;
 }
 
-.name-picker input, .name-picker button {
+.username {
+  margin-right: 5px;
+}
+
+.name-picker input, button {
+  margin-top: 0.5rem;
   max-width: 100px;
+  font-family: 'Big Shoulders Display';
+}
+
+.name-picker button {
+  background: none;
+  border: none;
+}
+
+.username {
+  margin-bottom: 8px;
 }

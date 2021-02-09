@@ -1,9 +1,11 @@
-import { useState } from "react";
+import {useState} from "react";
 
 
 function NamePicker(props) {
     const [showInput, setShowInput] = useState(false)
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState(
+        localStorage.getItem('username') || ''
+      )
 
     function save() {
         props.saveName(username)
@@ -19,9 +21,9 @@ function NamePicker(props) {
         </div>
     }
     return <div className="name-picker">
-        <div>{username}</div>
+        <div className="username">{username}</div>
         <button onClick={()=> setShowInput(true)}>
-            EDIT
+            ✎
         </button>
     </div>
 }

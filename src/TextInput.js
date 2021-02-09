@@ -1,8 +1,5 @@
 import {useState} from 'react'
 
-
-
-
 function TextInput(props) {
     const [text, setText] = useState('')
     

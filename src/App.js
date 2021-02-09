@@ -6,7 +6,7 @@ import NamePicker from './NamePicker';
 import {db, useDB} from './db'
 
 function App() {
-  const messages = useDB()
+  const [messages, setMessages] = useState([])  
   const [username, setUsername] = useState(
     localStorage.getItem('username') || ''
   )
@@ -20,15 +20,22 @@ function App() {
     
     <main className="messages">
       {messages.map((m,i)=> {
-        return <Message key={i} {...m} />
+        const isMe = m.name===username
+        return <Message key={i} {...m} isMe={isMe} />
       })}
     </main>
 
     <TextInput
-      send={(t)=> db.send({text:t, name:username, date:new Date()})}
+      send={(t)=> setMessages([{text:t, name:username, date:new Date()}, ...messages])}
     />
 
   </div>
 }
 
 export default App;
+//FOR FIREBASE DATABASE SUPPORT
+//LINE 9 const messages = useDB()
+//LINE 28 send={(t)=> db.send({text:t, name:username, date:new Date()})}
+//LOCAL
+//const [messages, setMessages] = useState([])
+//send={(t)=> setMessages([{text:t, name:username, date:new Date()}, ...messages])}
